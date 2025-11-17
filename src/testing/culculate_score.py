@@ -1,3 +1,6 @@
+from typing import List, Dict
+
+
 def calculate_score(results: List[bool]) -> Dict:
     """
     Calculate and return quiz results statistics.
