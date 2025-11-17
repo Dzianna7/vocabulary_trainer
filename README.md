@@ -1,1 +1,1 @@
-# Learning-new-words-app
+# Vocabulary trainer app
