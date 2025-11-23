@@ -1,7 +1,7 @@
-from src.dictionary_management.add_word import add_word
-from src.dictionary_management.import_from_file import import_from_file
-from src.dictionary_management.remove_word import remove_word
-from src.dictionary_management.show_all_words import show_all_words
+from src.vocabulary_trainer.dictionary.add_word import add_word
+from src.vocabulary_trainer.dictionary.import_from_file import import_from_file
+from src.vocabulary_trainer.dictionary.remove_word import remove_word
+from src.vocabulary_trainer.dictionary.show_all_words import show_all_words
 
 # использование FileManager
 def main():

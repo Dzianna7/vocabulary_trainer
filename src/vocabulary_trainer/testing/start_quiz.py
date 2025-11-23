@@ -1,5 +1,5 @@
 from typing import Dict
-from src.classes import QuizSession
+from src import QuizSession
 
 
 def start_quiz(words_count: int, mode: str, vocabulary: Dict[str, str]) -> 'QuizSession':

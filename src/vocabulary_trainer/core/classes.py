@@ -55,24 +55,18 @@ class QuizSession:
         pass
     # in ask_question.py
 
+    def mark_correct(self) -> None:
+        pass
+    # in immediate_answers.py
+
+    def mark_incorrect(self) -> None:
+        pass
+    # in immediate_answers.py
+
+    def get_difficulty_preset(self) -> int:
+        pass
+    # in test_difficulty.py
+
     def calculate_score(self, session: QuizSession) -> Dict:
         pass
     # in calculate_score.py
-
-
-class DifficultySettings:
-    def __init__(self, time_limit: int, hints: bool):
-        self.time_limit = time_limit
-        self.hints = hints
-
-    def get_preset(self, level: str):
-        pass
-    # returns settings for easy/normal/hard levels (not done)
-
-
-class FileManager:
-    supported_formats = ["json", "txt", "csv"]
-
-    def import_from_file(self, filename: str, format_type: str) -> Vocabulary:
-        pass
-    # in import_from_file.py
