@@ -1,18 +1,32 @@
-def add_word(word: str, translation: str) -> bool:
+from src.vocabulary_trainer.core.models import Vocabulary
+from src.vocabulary_trainer.core.exceptions import WordAlreadyExistsError
+
+
+def add_word(vocabulary: Vocabulary, word: str, translation: str) -> bool:
     """
-    Add a new word and its translation to the vocabulary.
+    Добавляет слово в словарь
 
     Args:
-        word (str): The word to add (e.g., "apple")
-        translation (str): The translation of the word (e.g., "яблоко")
+        vocabulary: Словарь, содержащий в себе пул слов с переводом
+        word: Слово на иностранном языке
+        translation: Перевод слова
 
     Returns:
-        bool: True if word was successfully added, False if word already exists
+        bool: True если слово добавлено
 
-    Example:
-        >>> add_word("book", "книга")
-        True
-        >>> add_word("book", "книга")
-        False  # word already exists
+    Raises:
+        ValueError: Если слово или перевод пустые
+        WordAlreadyExistsError: Если слово уже существует в словаре
     """
-    pass
+    word = word.strip()
+    translation = translation.strip()
+
+    # check if the input is not empty
+    if not word or not translation:
+        raise ValueError("Слово и перевод не могут быть пустыми")
+
+    # adding a word
+    if not vocabulary.add_word(word, translation):
+        raise WordAlreadyExistsError(f"Слово '{word}' уже существует в словаре")
+
+    return True

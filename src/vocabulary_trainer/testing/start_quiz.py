@@ -1,23 +1,68 @@
-from typing import Dict
-from src import QuizSession
+import random
+from src.vocabulary_trainer.core.models import QuizSession, Vocabulary
+from src.vocabulary_trainer.core.exceptions import NotEnoughWordsError
 
 
-def start_quiz(words_count: int, mode: str, vocabulary: Dict[str, str]) -> 'QuizSession':
+def start_quiz(vocabulary: Vocabulary, words_count, mode) -> QuizSession:
     """
-    Initialize and start a new quiz session.
+    Запускает новую сессию квиза
 
     Args:
-        words_count (int): Number of words to include in the quiz
-        mode (str): Quiz mode - 'en_to_ru', 'ru_to_en', or 'mixed'
-        vocabulary (Dict[str, str]): Dictionary of words and translations
+        vocabulary: Словарь
+        words_count: Количество слов для тестирования
+        mode: Режим тестирования ('word_to_translation', 'translation_to_word', 'mixed')
 
     Returns:
-        QuizSession: Initialized quiz session object
+        QuizSession: Сессия квиза
 
-    Example:
-        >>> vocab = {"apple": "яблоко", "book": "книга"}
-        >>> session = start_quiz(2, "en_to_ru", vocab)
-        >>> session.words_count
-        2
+    Raises:
+        NotEnoughWordsError: Если в словаре недостаточно слов
+        ValueError: Если указан неверный режим
     """
-    pass
+    if vocabulary.get_words_count() < words_count:
+        raise NotEnoughWordsError(
+            f"Недостаточно слов в словаре. Доступно: {vocabulary.get_words_count()}, требуется: {words_count}"
+        )
+
+    valid_modes = ['word_to_translation', 'translation_to_word', 'mixed']
+    if mode not in valid_modes:
+        raise ValueError(f"Неверный режим. Допустимые значения: {', '.join(valid_modes)}")
+
+    quiz_session = QuizSession(words_count, mode, vocabulary)
+
+    # choosing words for the quiz
+    quiz_words = vocabulary.get_words_for_quiz(words_count)
+
+    # different modes of questions
+    for word_obj in quiz_words:
+        if mode == 'word_to_translation':
+            quiz_session.questions.append({
+                'type': 'word_to_translation',
+                'question': word_obj.word,
+                'correct_answer': word_obj.translation,
+                'word_object': word_obj
+            })
+        elif mode == 'translation_to_word':
+            quiz_session.questions.append({
+                'type': 'translation_to_word',
+                'question': word_obj.translation,
+                'correct_answer': word_obj.word,
+                'word_object': word_obj
+            })
+        else:  # mixed
+            if random.choice([True, False]):
+                quiz_session.questions.append({
+                    'type': 'word_to_translation',
+                    'question': word_obj.word,
+                    'correct_answer': word_obj.translation,
+                    'word_object': word_obj
+                })
+            else:
+                quiz_session.questions.append({
+                    'type': 'translation_to_word',
+                    'question': word_obj.translation,
+                    'correct_answer': word_obj.word,
+                    'word_object': word_obj
+                })
+
+    return quiz_session

@@ -1,12 +1,22 @@
-def show_all_words() -> list[tuple[str, str]]:
+from src.vocabulary_trainer.core.models import Vocabulary
+from src.vocabulary_trainer.core.exceptions import EmptyVocabularyError
+
+
+def show_all_words(vocabulary: Vocabulary) -> list:
     """
-    Get all words from the vocabulary as a list of tuples.
+    Показывает все слова в словаре
+
+    Args:
+        vocabulary: Словарь
 
     Returns:
-        list[tuple[str, str]]: List of (word, translation) tuples
+        list: Список слов
 
-    Example:
-        >>> show_all_words()
-        [("apple", "яблоко"), ("book", "книга"), ("computer", "компьютер")]
+    Raises:
+        EmptyVocabularyError: Если словарь пуст
     """
-    pass
+    words = vocabulary.get_all_words()
+    if not words:
+        raise EmptyVocabularyError("Словарь пуст")
+
+    return words

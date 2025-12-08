@@ -1,17 +1,22 @@
-def remove_word(word: str) -> bool:
+from src.vocabulary_trainer.core.models import Vocabulary
+from src.vocabulary_trainer.core.exceptions import WordNotFoundError
+
+
+def remove_word(vocabulary: Vocabulary, word: str) -> bool:
     """
-    Remove a word from the vocabulary.
+    Удаляет слово из словаря
 
     Args:
-        word (str): The word to remove
+        vocabulary: Словарь, содержащий в себе пул слов с переводом
+        word: Слово для удаления
 
     Returns:
-        bool: True if word was successfully removed, False if word not found
+        bool: True если слово удалено
 
-    Example:
-        >>> remove_word("apple")
-        True
-        >>> remove_word("unknown_word")
-        False  # word not found
+    Raises:
+        WordNotFoundError: Если слово не найдено в словаре
     """
-    pass
+    if vocabulary.remove_word(word.strip()):
+        return True
+    else:
+        raise WordNotFoundError(f"Слово '{word}' не найдено в словаре")
