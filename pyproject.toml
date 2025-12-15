@@ -9,10 +9,5 @@ readme = "README.md"
 requires-python = ">=3.8"
 
 dependencies = [
-    "click>=8.0.0",           # для улучшенного интерфейса с командами и опциями
-    "colorama>=0.4.0",        # для цветного вывода в консоли
+    "colorama>=0.4.0",
 ]
-
-[project.optional-dependencies]
-gui = [
-    "customtkinter>=5.0.0"]   # современная версия tkinter для интерфейса

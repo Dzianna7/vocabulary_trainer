@@ -1,23 +1,8 @@
-class VocabularyError(Exception):
-    """Базовое исключение для словаря"""
+class WordAlreadyExistsError(Exception):
     pass
 
-class WordAlreadyExistsError(VocabularyError):
-    """Слово уже существует в словаре"""
+class WordNotFoundError(Exception):
     pass
 
-class WordNotFoundError(VocabularyError):
-    """Слово не найдено в словаре"""
-    pass
-
-class EmptyVocabularyError(VocabularyError):
-    """Словарь пуст"""
-    pass
-
-class QuizError(Exception):
-    """Базовое исключение для квиза"""
-    pass
-
-class NotEnoughWordsError(QuizError):
-    """Недостаточно слов для квиза"""
+class NotEnoughWordsError(Exception):
     pass

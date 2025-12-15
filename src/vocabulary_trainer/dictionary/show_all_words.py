@@ -1,22 +1,15 @@
-from src.vocabulary_trainer.core.models import Vocabulary
-from src.vocabulary_trainer.core.exceptions import EmptyVocabularyError
+def show_all_words(vocabulary):
+    try:
+        words = vocabulary.try_show_all_words()
+        if not words:
+            raise ValueError("The vocabulary is empty")
 
+        print(f"\n=== DICTIONARY ({len(words)} words) ===")
+        for i, word in enumerate(words, 1):
+            print(f"{i}. {word.word} - {word.translation}")
 
-def show_all_words(vocabulary: Vocabulary) -> list:
-    """
-    Показывает все слова в словаре
+        return words
 
-    Args:
-        vocabulary: Словарь
-
-    Returns:
-        list: Список слов
-
-    Raises:
-        EmptyVocabularyError: Если словарь пуст
-    """
-    words = vocabulary.get_all_words()
-    if not words:
-        raise EmptyVocabularyError("Словарь пуст")
-
-    return words
+    except ValueError as e:
+        print(f"Error: {e}")
+        return None

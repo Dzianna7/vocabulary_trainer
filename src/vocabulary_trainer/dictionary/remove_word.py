@@ -1,22 +1,19 @@
-from src.vocabulary_trainer.core.models import Vocabulary
 from src.vocabulary_trainer.core.exceptions import WordNotFoundError
 
+def remove_word(vocabulary):
+    try:
+        word = input("Enter word to remove: ").strip()
 
-def remove_word(vocabulary: Vocabulary, word: str) -> bool:
-    """
-    Удаляет слово из словаря
+        if not word:
+            print("Error: Word cannot be empty")
+            return False
 
-    Args:
-        vocabulary: Словарь, содержащий в себе пул слов с переводом
-        word: Слово для удаления
+        if vocabulary.try_remove_word(word):
+            print(f"Word '{word}' removed from dictionary")
+            return True
+        else:
+            raise WordNotFoundError(f"Word '{word}' not found in dictionary")
 
-    Returns:
-        bool: True если слово удалено
-
-    Raises:
-        WordNotFoundError: Если слово не найдено в словаре
-    """
-    if vocabulary.remove_word(word.strip()):
-        return True
-    else:
-        raise WordNotFoundError(f"Слово '{word}' не найдено в словаре")
+    except WordNotFoundError as e:
+        print(f"Error: {e}")
+        return False
