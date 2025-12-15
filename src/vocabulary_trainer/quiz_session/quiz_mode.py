@@ -1,11 +1,11 @@
-from src.vocabulary_trainer.testing.test_difficulty import get_time_limit, get_first_letter_hint
-from src.vocabulary_trainer.testing.test_difficulty import format_time
+from src.vocabulary_trainer.quiz_session.test_difficulty import get_time_limit, get_first_letter_hint
+from src.vocabulary_trainer.quiz_session.test_difficulty import format_time
 
 import random
 import time
 from src.vocabulary_trainer.core.models import QuizSession
 from src.vocabulary_trainer.core.exceptions import NotEnoughWordsError
-from src.vocabulary_trainer.testing.ask_question import get_current_question, get_question_text, submit_answer
+from src.vocabulary_trainer.quiz_session.ask_question import get_current_question, get_question_text, submit_answer
 
 
 def create_quiz(vocabulary, words_count: int, mode: str):

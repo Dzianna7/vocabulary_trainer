@@ -2,7 +2,7 @@ from src.vocabulary_trainer.core.models import Vocabulary
 from src.vocabulary_trainer.dictionary.add_word import add_word
 from src.vocabulary_trainer.dictionary.remove_word import remove_word
 from src.vocabulary_trainer.dictionary.show_all_words import show_all_words
-from src.vocabulary_trainer.testing.quiz_mode import quiz_handler
+from src.vocabulary_trainer.quiz_session.quiz_mode import quiz_handler
 
 
 def show_menu():
