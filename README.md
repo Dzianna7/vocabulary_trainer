@@ -93,13 +93,6 @@ After completing all questions:
 - **Personalized feedback** provided
 - **Word statistics** automatically updated
 
-## ⌨️ Keyboard Shortcuts
-| Key | Action |
-|-----|--------|
-| **Enter** | Submit current answer |
-| **Tab** | Navigate between UI elements |
-| *Auto-focus* | Answer field is automatically selected |
-
 ## 📊 Scoring System
 | Score Range | Feedback Message | Emoji |
 |-------------|-----------------|-------|
