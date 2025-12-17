@@ -41,7 +41,7 @@ class Vocabulary:
 
         all_words = list(self.words.values())
         all_words.sort(key=lambda x: x.get_success_rate())
-        return all_words[:min(count, len(all_words))]
+        return all_words[: min(count, len(all_words))]
 
 
 class QuizSession:

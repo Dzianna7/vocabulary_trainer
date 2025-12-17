@@ -1,22 +1,38 @@
+import tkinter as tk
 from src.vocabulary_trainer.core.exceptions import WordAlreadyExistsError
 
-def add_word(vocabulary) -> bool:
+
+def add_word(word_entry, translation_entry, vocabulary, result_label=None):
     try:
-        word = input("Enter word: ").strip()
-        translation = input("Enter translation: ").strip()
+        word = word_entry.get().strip()
+        translation = translation_entry.get().strip()
 
         if not word or not translation:
-            raise ValueError("A word or a translation must be provided")
+            if result_label:
+                result_label.config(
+                    text="Error: Both word and translation must be provided", fg="red"
+                )
+            return False
 
-        word = word.strip()
-        translation = translation.strip()
+        if vocabulary.try_add_word(word, translation):
+            word_entry.delete(0, tk.END)
+            translation_entry.delete(0, tk.END)
 
-        if not vocabulary.try_add_word(word, translation):
-            raise WordAlreadyExistsError(f"The word '{word}' has already been added")
+            if result_label:
+                result_label.config(
+                    text=f"Word '{word}' added successfully!", fg="green"
+                )
+            return True
+        else:
+            raise WordAlreadyExistsError(f"Word '{word}' already exists in dictionary")
 
-        print(f"Word '{word}' added to dictionary")
-        return True
+    except WordAlreadyExistsError as e:
+        if result_label:
+            result_label.config(text=f"Error: {e}", fg="red")
+        return False
 
-    except (ValueError, WordAlreadyExistsError) as e:
-        print(f"Error: {e}")
+    except Exception as e:
+        if result_label:
+            result_label.config(text=f"Unexpected error: {e}", fg="red")
+        print(f"Error adding word: {e}")
         return False

@@ -1,7 +1,4 @@
-def get_time_limit(level: int, words_count: int) -> int:
-    """
-    Calculate time limit based on difficulty level and number of words.
-    """
+def get_time_limit(level, words_count):
     if level == 1:  # Easy - no time limit
         return 0
 
@@ -37,8 +34,8 @@ def format_time(seconds: int) -> str:
     return f"{minutes:02d}:{seconds:02d}"
 
 
-def get_first_letter_hint(word_obj, question_type: str) -> str:
-    if question_type == 'word_to_translation':
+def get_first_letter_hint(word_obj, question_type):
+    if question_type == "word_to_translation":
         if word_obj.translation and len(word_obj.translation) > 0:
             return f"First letter of translation: '{word_obj.translation[0]}'"
     else:

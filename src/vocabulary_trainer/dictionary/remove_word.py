@@ -1,19 +1,28 @@
+import tkinter as tk
 from src.vocabulary_trainer.core.exceptions import WordNotFoundError
 
-def remove_word(vocabulary):
+
+def remove_word(word_entry, vocabulary, result_label=None):
     try:
-        word = input("Enter word to remove: ").strip()
+        word = word_entry.get().strip()
 
         if not word:
-            print("Error: Word cannot be empty")
+            if result_label:
+                result_label.config(text="Error: Word cannot be empty", fg="red")
             return False
 
         if vocabulary.try_remove_word(word):
-            print(f"Word '{word}' removed from dictionary")
+            word_entry.delete(0, tk.END)
+
+            if result_label:
+                result_label.config(
+                    text=f"Word '{word}' removed successfully!", fg="green"
+                )
             return True
         else:
             raise WordNotFoundError(f"Word '{word}' not found in dictionary")
 
     except WordNotFoundError as e:
-        print(f"Error: {e}")
+        if result_label:
+            result_label.config(text=f"Error: {e}", fg="red")
         return False

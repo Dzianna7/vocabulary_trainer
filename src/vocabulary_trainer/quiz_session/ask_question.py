@@ -14,15 +14,19 @@ def submit_answer(quiz_session, user_answer):
         return False
 
     current_question = quiz_session.questions[quiz_session.current_question_index]
-    is_correct = user_answer.strip().lower() == current_question['correct_answer'].lower()
+    is_correct = (
+        user_answer.strip().lower() == current_question["correct_answer"].lower()
+    )
 
-    quiz_session.answers.append({
-        'question': current_question['question'],
-        'correct_answer': current_question['correct_answer'],
-        'user_answer': user_answer,
-        'is_correct': is_correct,
-        'type': current_question['type']
-    })
+    quiz_session.answers.append(
+        {
+            "question": current_question["question"],
+            "correct_answer": current_question["correct_answer"],
+            "user_answer": user_answer,
+            "is_correct": is_correct,
+            "type": current_question["type"],
+        }
+    )
 
     quiz_session.current_question_index += 1
     return is_correct
