@@ -6,8 +6,28 @@ authors = [
     {name = "Diana", email = "dvgribanova@edu.hse.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = "==3.14.*"
 
-dependencies = [
-    "colorama>=0.4.0",
+[dependency-groups]
+dev = [
+    "ruff == 0.14.9",
+    "pre-commit == 4.5.1"
 ]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+quote-style = 'single'
+
+[tool.ruff.lint]
+select = ['F', 'E', 'W', 'I', 'N', 'D', 'C', 'T', 'UP', 'YTT', 'ANN', 'ASYNC', 'S', 'B', 'A', 'COM', 'C4', 'ISC',
+    'ICN', 'LOG', 'G', 'INP', 'PIE', 'T20', 'PYI', 'Q', 'RSE', 'RET', 'SLF', 'SIM', 'TID', 'TC', 'INT', 'ARG',
+    'PL', 'FLY', 'NPY', 'FAST', 'PERF', 'FURB', 'RUF']
+ignore = ['D100', 'D104', 'G004', 'RUF001', 'RUF002', 'RUF003', 'COM812']
+
+[tool.ruff.lint.pydocstyle]
+convention = 'pep257'
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = 'single'
