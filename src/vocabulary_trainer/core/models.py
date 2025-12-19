@@ -2,7 +2,7 @@ from typing import Dict, List
 
 
 class Word:
-    def __init__(self, word, translation):
+    def __init__(self, word: str, translation: str):
         self.word = word
         self.translation = translation
         self.correct_answers = 0
@@ -23,7 +23,7 @@ class Vocabulary:
         self.words[word.lower()] = Word(word, translation)
         return True
 
-    def try_remove_word(self, word) -> bool:
+    def try_remove_word(self, word: str) -> bool:
         if word.lower() in self.words:
             del self.words[word.lower()]
             return True
@@ -35,7 +35,7 @@ class Vocabulary:
     def get_words_count(self) -> int:
         return len(self.words)
 
-    def get_words_for_quiz(self, count) -> List[Word]:
+    def get_words_for_quiz(self, count: int) -> List[Word]:
         if not self.words:
             return []
 
@@ -45,7 +45,7 @@ class Vocabulary:
 
 
 class QuizSession:
-    def __init__(self, words_count, mode, vocabulary):
+    def __init__(self, words_count: int, mode: str, vocabulary: Vocabulary) -> None:
         self.words_count = words_count
         self.mode = mode
         self.vocabulary = vocabulary
