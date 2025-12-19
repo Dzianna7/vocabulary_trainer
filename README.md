@@ -29,15 +29,23 @@ A desktop application for learning and practicing vocabulary with interactive qu
 
 ## Installation
 ### Setup
-1. Clone/download the repository
-2. Run the application:
+#### 1. Clone the repository: 
 ```bash
-python main.py
+git clone https://github.com/Dzianna7/vocabulary_trainer.git
+```
+#### 2. Choose the directory:
+```bash
+cd Vocabulary_trainer
+```
+#### 3. Run the application:
+```bash
+python3 -m src.main
 ```
 ## Project Structure
 ```
 vocabulary_trainer/
 ├── src/
+│   ├── main.py
 │   ├── __init__.py
 │   └── vocabulary_trainer/
 │       ├── __init__.py
@@ -59,7 +67,8 @@ vocabulary_trainer/
 │       │   ├── __init__.py     
 │       └── └── menu.py    
 ├── .gitignore
-├── main.py
+├── .pre-commit-config.yaml
+├── poetry.lock
 ├── pyproject.toml
 └── README.md
 ```
@@ -94,25 +103,25 @@ After completing all questions:
 - **Word statistics** automatically updated
 
 ## 📊 Scoring System
-| Score Range | Feedback Message | Emoji |
-|-------------|-----------------|-------|
-| **90-100%** | Outstanding performance! | 🏆 |
-| **80-89%**  | Excellent work! | 🎉 |
-| **60-79%**  | Good job! | 👍 |
-| **40-59%**  | Keep practicing! | 📚 |
-| **0-39%**   | Don't give up! Practice makes perfect. | 💪 |
+| Score Range | Feedback Message                       | Emoji |
+|-------------|----------------------------------------|-------|
+| **90-100%** | Outstanding performance!               | 🏆    |
+| **80-89%**  | Excellent work!                        | 🎉    |
+| **60-79%**  | Good job!                              | 👍    |
+| **40-59%**  | Keep practicing!                       | 📚    |
+| **0-39%**   | Don't give up! Practice makes perfect. | 💪    |
 
 ## ⚠️ Error Handling & Validation
-| Error Type | Prevention Method |
-|------------|------------------|
-| **Empty Dictionary** | Warning message prevents quiz start |
+| Error Type           | Prevention Method                      |
+|----------------------|----------------------------------------|
+| **Empty Dictionary** | Warning message prevents quiz start    |
 | **Empty Word Entry** | Validation prevents saving empty words |
-| **Quiz Errors** | Exception catching prevents crashes |
-| **Invalid Input** | Field validation with user feedback |
+| **Quiz Errors**      | Exception catching prevents crashes    |
+| **Invalid Input**    | Field validation with user feedback    |
 
 ## ⏱️ Time Limits by Difficulty
-| Level | Time Limit | Features |
-|-------|------------|----------|
-| **Easy** | No limit | ✓ Hints available<br>✓ Relaxed timing |
+| Level      | Time Limit      | Features                                |
+|------------|-----------------|-----------------------------------------|
+| **Easy**   | No limit        | ✓ Hints available<br>✓ Relaxed timing   |
 | **Medium** | 30 seconds/word | ⏱️ Timer visible<br>⏳ Moderate pressure |
-| **Hard** | 15 seconds/word | ⚡ Strict timing<br>🏁 Fast-paced |
+| **Hard**   | 15 seconds/word | ⚡ Strict timing<br>🏁 Fast-paced        |
