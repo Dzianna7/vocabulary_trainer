@@ -28,16 +28,15 @@ A desktop application for learning and practicing vocabulary with interactive qu
 - Keyboard shortcuts (Enter to submit)
 
 ## Installation
-### Setup
-#### 1. Clone the repository: 
+### 1. Clone the repository: 
 ```bash
 git clone https://github.com/Dzianna7/vocabulary_trainer.git
 ```
-#### 2. Choose the directory:
+### 2. Choose the directory:
 ```bash
 cd Vocabulary_trainer
 ```
-#### 3. Run the application:
+### 3. Run the application:
 ```bash
 python3 -m src.main
 ```
