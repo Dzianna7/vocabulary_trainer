@@ -1,8 +1,15 @@
 import tkinter as tk
+from typing import Optional
+from src.vocabulary_trainer.core.models import Vocabulary
 from src.vocabulary_trainer.core.exceptions import WordAlreadyExistsError
 
 
-def add_word(word_entry, translation_entry, vocabulary, result_label=None):
+def add_word(
+    word_entry: tk.Entry,
+    translation_entry: tk.Entry,
+    vocabulary: Vocabulary,
+    result_label: Optional[tk.Label] = None
+) -> bool:
     try:
         word = word_entry.get().strip()
         translation = translation_entry.get().strip()

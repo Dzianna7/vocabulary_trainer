@@ -1,8 +1,14 @@
 import tkinter as tk
+from typing import Optional
+from src.vocabulary_trainer.core.models import Vocabulary
 from src.vocabulary_trainer.core.exceptions import WordNotFoundError
 
 
-def remove_word(word_entry, vocabulary, result_label=None):
+def remove_word(
+    word_entry: tk.Entry,
+    vocabulary: Vocabulary,
+    result_label: Optional[tk.Label] = None
+) -> bool:
     try:
         word = word_entry.get().strip()
 

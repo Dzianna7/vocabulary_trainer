@@ -1,9 +1,10 @@
 import random
+from src.vocabulary_trainer.core.models import Vocabulary
 from src.vocabulary_trainer.core.models import QuizSession
 from src.vocabulary_trainer.core.exceptions import NotEnoughWordsError
 
 
-def create_quiz(vocabulary, words_count: int, mode: str):
+def create_quiz(vocabulary: Vocabulary, words_count: int, mode: str) -> QuizSession:
     """
     Creates a new quiz session with questions.
 
@@ -55,7 +56,7 @@ def create_quiz(vocabulary, words_count: int, mode: str):
     return quiz
 
 
-def update_word_statistics(quiz):
+def update_word_statistics(quiz: QuizSession) -> None:
     if not quiz.answers:
         return
 

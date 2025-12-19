@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import scrolledtext, messagebox
 import time
-from src.vocabulary_trainer.core.models import Vocabulary
+from src.vocabulary_trainer.core.models import Vocabulary, QuizSession
 from src.vocabulary_trainer.dictionary.add_word import add_word
 from src.vocabulary_trainer.dictionary.remove_word import remove_word
 from src.vocabulary_trainer.dictionary.show_all_words import show_all_words
@@ -22,12 +22,12 @@ from src.vocabulary_trainer.quiz_session.ask_question import (
 
 
 class VocabularyTrainerGUI:
-    def __init__(self, master):
+    def __init__(self, master: tk.Tk):
         self.master = master
         self.vocabulary = Vocabulary()
         self.create_main_menu()
 
-    def create_main_menu(self):
+    def create_main_menu(self) -> None:
         tk.Label(
             self.master, text="Vocabulary Trainer", font=("Arial", 16, "bold")
         ).pack(pady=20)
@@ -57,7 +57,7 @@ class VocabularyTrainerGUI:
             font=("Arial", 10),
         ).pack(pady=20)
 
-    def add_word_window(self):
+    def add_word_window(self) -> None:
         window = tk.Toplevel(self.master)
         window.title("Add New Word")
         window.geometry("400x250")
@@ -100,7 +100,7 @@ class VocabularyTrainerGUI:
 
         word_entry.focus()
 
-    def remove_word_window(self):
+    def remove_word_window(self) -> None:
         window = tk.Toplevel(self.master)
         window.title("Remove Word")
         window.geometry("400x180")
@@ -135,7 +135,7 @@ class VocabularyTrainerGUI:
 
         word_entry.focus()
 
-    def show_words_window(self):
+    def show_words_window(self) -> None:
         window = tk.Toplevel(self.master)
         window.title("All Words")
         window.geometry("500x350")
@@ -156,7 +156,7 @@ class VocabularyTrainerGUI:
 
         show_all_words(self.vocabulary, text_area, result_label)
 
-    def start_quiz(self):
+    def start_quiz(self) -> None:
         if self.vocabulary.get_words_count() == 0:
             messagebox.showwarning(
                 "Empty Dictionary", "Add words before taking a quiz."
@@ -221,7 +221,7 @@ class VocabularyTrainerGUI:
         btn_frame = tk.Frame(settings_window)
         btn_frame.pack(pady=20)
 
-        def start():
+        def start() -> None:
             settings_window.destroy()
             self.run_quiz(difficulty.get(), words_count.get(), mode.get())
 
@@ -232,7 +232,7 @@ class VocabularyTrainerGUI:
             btn_frame, text="Cancel", command=settings_window.destroy, width=10
         ).pack(side="left", padx=5)
 
-    def run_quiz(self, level, words_count, mode):
+    def run_quiz(self, level: int, words_count: int, mode: str) -> None:
         try:
             quiz = create_quiz(self.vocabulary, words_count, mode)
             self.quiz_window(quiz, level)
@@ -240,7 +240,7 @@ class VocabularyTrainerGUI:
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
-    def quiz_window(self, quiz, level):
+    def quiz_window(self, quiz: QuizSession, level: int) -> None:
         window = tk.Toplevel(self.master)
         window.title("Vocabulary Quiz")
         window.geometry("500x450")
@@ -263,7 +263,7 @@ class VocabularyTrainerGUI:
         timer_label = tk.Label(top_frame, text="", font=("Arial", 12))
         timer_label.pack(side="right")
 
-        def update_timer():
+        def update_timer() -> None:
             if time_limit <= 0:
                 return
 
@@ -299,14 +299,14 @@ class VocabularyTrainerGUI:
         btn_frame = tk.Frame(window)
         btn_frame.pack(pady=10)
 
-        def next_question():
+        def next_question() -> None:
             nonlocal current_index, hint_used
             current_index += 1
             quiz.current_question_index = current_index
             hint_used = False
             show_question()
 
-        def check_answer():
+        def check_answer() -> None:
             answer = answer_entry.get().strip()
             if not answer:
                 return
@@ -317,7 +317,7 @@ class VocabularyTrainerGUI:
 
             next_question()
 
-        def show_question():
+        def show_question() -> None:
             nonlocal hint_used, current_question
             if current_index >= len(quiz.questions):
                 end_quiz()
@@ -337,7 +337,7 @@ class VocabularyTrainerGUI:
                 hint_button.config(state="normal", text="Get Hint")
             hint_used = False
 
-        def show_hint():
+        def show_hint() -> None:
             nonlocal hint_used, current_question
 
             if (
@@ -363,7 +363,7 @@ class VocabularyTrainerGUI:
             hint_text = get_first_letter_hint(word_obj, question_type)
             messagebox.showinfo("Hint", hint_text)
 
-        def end_quiz():
+        def end_quiz() -> None:
             update_word_statistics(quiz)
 
             total = len(quiz.questions)

@@ -1,7 +1,13 @@
 import tkinter as tk
+from typing import Optional, List
+from src.vocabulary_trainer.core.models import Vocabulary, Word
 
 
-def show_all_words(vocabulary, text_widget=None, result_label=None):
+def show_all_words(
+    vocabulary: Vocabulary,
+    text_widget: Optional[tk.Text] = None,
+    result_label: Optional[tk.Label] = None
+) -> Optional[List[Word]]:
     try:
         words = vocabulary.try_show_all_words()
 

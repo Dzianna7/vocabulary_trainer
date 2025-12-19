@@ -8,7 +8,7 @@ class Word:
         self.correct_answers = 0
         self.incorrect_answers = 0
 
-    def get_success_rate(self):
+    def get_success_rate(self) -> float:
         total = self.correct_answers + self.incorrect_answers
         return self.correct_answers / total if total > 0 else 0.0
 
@@ -17,25 +17,25 @@ class Vocabulary:
     def __init__(self):
         self.words: Dict[str, Word] = {}
 
-    def try_add_word(self, word, translation):
+    def try_add_word(self, word, translation) -> bool:
         if word.lower() in self.words:
             return False
         self.words[word.lower()] = Word(word, translation)
         return True
 
-    def try_remove_word(self, word):
+    def try_remove_word(self, word) -> bool:
         if word.lower() in self.words:
             del self.words[word.lower()]
             return True
         return False
 
-    def try_show_all_words(self):
+    def try_show_all_words(self) -> List[Word]:
         return list(self.words.values())
 
-    def get_words_count(self):
+    def get_words_count(self) -> int:
         return len(self.words)
 
-    def get_words_for_quiz(self, count):
+    def get_words_for_quiz(self, count) -> List[Word]:
         if not self.words:
             return []
 
@@ -53,5 +53,5 @@ class QuizSession:
         self.answers: List[Dict] = []
         self.current_question_index = 0
 
-    def is_completed(self):
+    def is_completed(self) -> bool:
         return self.current_question_index >= len(self.questions)

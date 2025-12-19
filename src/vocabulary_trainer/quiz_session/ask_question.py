@@ -1,15 +1,18 @@
-def get_current_question(quiz_session):
+from typing import Optional, Dict, Any, Union
+from src.vocabulary_trainer.core.models import QuizSession
+
+def get_current_question(quiz_session: QuizSession) -> Optional[Dict[str, Any]]:
     if quiz_session.is_completed():
         return None
 
     return quiz_session.questions[quiz_session.current_question_index]
 
 
-def get_question_text(question_data):
+def get_question_text(question_data: Dict[str, Any]) -> str:
     return f"Translate the word: '{question_data['question']}'"
 
 
-def submit_answer(quiz_session, user_answer):
+def submit_answer(quiz_session: QuizSession, user_answer: str) -> bool:
     if quiz_session.is_completed():
         return False
 
