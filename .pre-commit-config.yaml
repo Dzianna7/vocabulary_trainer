@@ -1,4 +1,4 @@
-repo: https://github.com/Dzianna7/vocabulary_trainer
+repo: https://github.com/Dzianna7/vocabulary_trainer  # Нет, здесь должен быть репозиторий с хуками для ruff. Поэтому-то у вас и не работал ruff перед коммитами :(
 rev: v0.14.9
 hooks:
   - id: ruff

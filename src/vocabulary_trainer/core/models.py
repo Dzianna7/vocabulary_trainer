@@ -1,4 +1,6 @@
-from typing import Dict, List
+# Нет докстрингов
+
+from typing import Dict, List  # Такая типизация устарела. Вместо этого используйте `dict[..., ...]` и `list[...]`
 
 
 class Word:

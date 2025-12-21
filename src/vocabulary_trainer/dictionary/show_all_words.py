@@ -1,6 +1,8 @@
+# Нет докстрингов, импорты не отсортированы
+
 import tkinter as tk
-from typing import Optional, List
-from src.vocabulary_trainer.core.models import Vocabulary, Word
+from typing import Optional, List  # Такая типизация устарела.
+from src.vocabulary_trainer.core.models import Vocabulary, Word  # Неправильный импорт.
 
 
 def show_all_words(

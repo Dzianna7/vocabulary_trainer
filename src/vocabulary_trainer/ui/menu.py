@@ -1,7 +1,9 @@
+# Нет докстрингов, импорты не отсортированы
+
 import tkinter as tk
 from tkinter import scrolledtext, messagebox
 import time
-from src.vocabulary_trainer.core.models import Vocabulary, QuizSession
+from src.vocabulary_trainer.core.models import Vocabulary, QuizSession  # Неправильные импорты.
 from src.vocabulary_trainer.dictionary.add_word import add_word
 from src.vocabulary_trainer.dictionary.remove_word import remove_word
 from src.vocabulary_trainer.dictionary.show_all_words import show_all_words
@@ -272,7 +274,7 @@ class VocabularyTrainerGUI:
 
             if remaining > 0:
                 timer_label.config(text=f"Time: {format_time(remaining)}")
-                timer_label.after(1000, update_timer)
+                timer_label.after(1000, update_timer)  # Parameter 'args' unfilled, expected '*tuple[]'
             else:
                 timer_label.config(text="TIME'S UP!")
                 end_quiz()

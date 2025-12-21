@@ -1,12 +1,13 @@
 [project]
 name = "vocabulary-trainer"
-version = "0.1.0"
+version = "0.1.0"  # Начинайте с первой версии, а не с нулевой - `1.0.0`
 description = "A vocabulary learning application with multiple testing modes"
 authors = [
     {name = "Diana", email = "dvgribanova@edu.hse.com"}
 ]
 readme = "README.md"
-requires-python = "==3.14.*"
+requires-python = "==3.14.*"  # Для tkinter-проектов лучше использовать Python 3.10 - 3.12
+# 3.14 - это вообще не самая безопасная версия сегодня, т.к. она все еще в разработке
 
 [dependency-groups]
 dev = [
@@ -14,7 +15,7 @@ dev = [
     "pre-commit == 4.5.1"
 ]
 
-[tool.ruff]
+[tool.ruff]  # Вы настроили ruff, но не запустили его :( Проект не отформатирован - Found 266 errors.
 line-length = 120
 
 [tool.ruff.format]

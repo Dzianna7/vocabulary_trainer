@@ -1,5 +1,7 @@
+# Не везде есть докстринги, импорты не отсортированы
+
 import random
-from src.vocabulary_trainer.core.models import Vocabulary
+from src.vocabulary_trainer.core.models import Vocabulary  # Неправильные импорты. Все из-за того, что вы не заполнили `__init__.py`
 from src.vocabulary_trainer.core.models import QuizSession
 from src.vocabulary_trainer.core.exceptions import NotEnoughWordsError
 
@@ -60,6 +62,7 @@ def update_word_statistics(quiz: QuizSession) -> None:
     if not quiz.answers:
         return
 
+    # Слишком много "ступенек". Можно было написать проще
     for i, answer in enumerate(quiz.answers):
         if i < len(quiz.questions):
             question = quiz.questions[i]

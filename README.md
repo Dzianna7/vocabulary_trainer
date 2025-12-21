@@ -33,14 +33,22 @@ A desktop application for learning and practicing vocabulary with interactive qu
 git clone https://github.com/Dzianna7/vocabulary_trainer.git
 ```
 ### 2. Choose the directory:
+
+(Не понимаю смысл этого действия. Тем более репозиторий называется не "Vocabulary_trainer".)
 ```bash
 cd Vocabulary_trainer
 ```
+
+(Нет шага по настройке окружения - хотя бы `pip install poetry` и `poetry install`)
 ### 3. Run the application:
+
+(Перед запуском необходимо настроить Python для `tkinter`. Об этом необходимо писать в README. Без настройки ничего просто не запустится.)
 ```bash
 python3 -m src.main
 ```
 ## Project Structure
+
+(Нет никаких пояснений по структуре.)
 ```
 vocabulary_trainer/
 ├── src/

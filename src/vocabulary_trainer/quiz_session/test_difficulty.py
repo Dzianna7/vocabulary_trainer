@@ -1,5 +1,11 @@
-from src.vocabulary_trainer.core.models import Word
+# Нет докстрингов, импорты не отсортированы
 
+# Если это тест, то он не должен лежать под `src`. Если это не тест, то он не может называться `test_... .py`
+
+from src.vocabulary_trainer.core.models import Word  # Неправильный импорт.
+
+
+# `level` следовало обернуть в Enum
 def get_time_limit(level: int, words_count: int) -> int:
     if level == 1:  # Easy - no time limit
         return 0
