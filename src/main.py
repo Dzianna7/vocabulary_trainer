@@ -1,5 +1,7 @@
 import tkinter as tk
 from src.vocabulary_trainer.ui.menu import VocabularyTrainerGUI
+# Неправильный импорт. Вам нужно было правильно заполнить `src/vocabulary_trainer/__init__.py` и здесь импорт был бы:
+# from vocabulary_trainer import VocabularyTrainerGUI
 
 
 def main():

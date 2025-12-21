@@ -1,6 +1,8 @@
+# Нет докстрингов, импорты не отсортированы
+
 import tkinter as tk
-from typing import Optional
-from src.vocabulary_trainer.core.models import Vocabulary
+from typing import Optional  # Такая типизация устарела. Вместо Optional используйте `| None`. Пример: result_label: `tk.Label | None`
+from src.vocabulary_trainer.core.models import Vocabulary  # Неправильные импорты. Все из-за того, что вы не заполнили `__init__.py`
 from src.vocabulary_trainer.core.exceptions import WordAlreadyExistsError
 
 

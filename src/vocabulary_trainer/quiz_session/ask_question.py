@@ -1,5 +1,8 @@
-from typing import Optional, Dict, Any, Union
-from src.vocabulary_trainer.core.models import QuizSession
+# Нет докстрингов, импорты не отсортированы
+
+from typing import Optional, Dict, Any, Union  # Такая типизация устарела.
+# `Any` желательно не использовать. В вашем коде вы могли точно указать тип.
+from src.vocabulary_trainer.core.models import QuizSession  # Неправильный импорт.
 
 def get_current_question(quiz_session: QuizSession) -> Optional[Dict[str, Any]]:
     if quiz_session.is_completed():
